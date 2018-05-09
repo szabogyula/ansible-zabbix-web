@@ -122,6 +122,15 @@ The following is an overview of all available configuration default for this rol
 * `zabbix_web_max_input_time`:
 * `zabbix_web_env`: (Optional) A Dictionary of PHP Environments
 
+#### SSL support
+```
+  zabbix_apache_ssl:
+    certificate_file: "/opt/zabbix/certs/server.crt"
+    certificate_key_file: "/opt/zabbix/certs/server.key"
+    certificate_chain_file: "/opt/zabbix/certs/certificate_chain.crt"
+```
+ (Optional) settingis of ssl support
+
 ### Zabbix Server
 
 * `zabbix_server_name`: The name of the Zabbix Server.

@@ -7,6 +7,17 @@
   ## Vhost docroot
   DocumentRoot "/usr/share/zabbix"
 
+  {% if zabbix_apache_ssl is defined %}
+    SSLEngine on
+    SSLCipherSuite AES256+EECDH:AES256+EDH
+    SSLProtocol All -SSLv2 -SSLv3
+    SSLHonorCipherOrder On
+    SSLCompression off
+    SSLCertificateFile "{{ zabbix_apache_ssl.certificate_file }}"
+    SSLCertificateKeyFile "{{ zabbix_apache_ssl.certificate_key_file }}"
+    SSLCertificateChainFile "{{ zabbix_apache_ssl.certificate_chain_file }}"
+  {% endif %}
+
 {% set directory_paths = ['/usr/share/zabbix/conf', '/usr/share/zabbix/app', '/usr/share/zabbix/include', '/usr/share/zabbix/include/classes'] %}
 
   <Directory "/usr/share/zabbix">
